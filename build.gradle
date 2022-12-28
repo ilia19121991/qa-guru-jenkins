@@ -32,7 +32,7 @@ dependencies {
             "com.codeborne:selenide:6.3.5",
             "io.qameta.allure:allure-selenide:2.20.1",
             "org.junit.jupiter:junit-jupiter:5.8.2",
-            "org.slf4j:slf4j-simple:1.7.32"
+            "org.slf4j:slf4j-tests.simple:1.7.32"
     )
 }
 
