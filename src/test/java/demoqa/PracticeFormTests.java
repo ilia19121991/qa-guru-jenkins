@@ -15,7 +15,7 @@ public class PracticeFormTests extends TestBase {
     @Test
     void practiceFormTest() {
 
-        String firstName = "Anna";
+        String firstName = "anna";
         String lastName = "Petrova";
         String email = "anna@gmail.com";
         String mobile = "9166789010";
