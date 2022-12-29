@@ -29,7 +29,7 @@ public class SystemPropertiesTests {
     @Test
     void simpleProperty3Test() {
         System.setProperty("browser", "opera"); // установили значение браузера "opera"
-        String browserName = System.getProperty("browser", "firefox"); /*запросили значение браузера
+        String browserName = System.getProperty("browser", "firefox"); /* запросили значение браузера
         с указанием, что по дефолту стоял firefox*/
 
         System.out.println(browserName); // opera
@@ -54,7 +54,7 @@ public class SystemPropertiesTests {
     @Test
     @Tag("hello")
     void simpleProperty5Test(){
-        System.out.println("Hello ," + System.getProperty("user_name", "unknown student"));
+        System.out.println("Hello," + System.getProperty("user_name", "unknown student"));
 
         /*
         gradle clean hello_test
