@@ -54,7 +54,7 @@ public class SystemPropertiesTests {
     @Test
     @Tag("hello")
     void simpleProperty5Test(){
-        System.out.println("Hello," + System.getProperty("user_name", "unknown student"));
+        System.out.println("Hello, " + System.getProperty("user_name", "unknown student"));
 
         /*
         gradle clean hello_test
