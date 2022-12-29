@@ -14,11 +14,12 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
+        // Configuration.baseUrl = "https://demoqa.com";
+        Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com");
         Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-        // Configuration.timeout = 10000;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        // Configuration.timeout = 10000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
