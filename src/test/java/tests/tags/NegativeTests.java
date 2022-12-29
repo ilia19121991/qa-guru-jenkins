@@ -1,13 +1,13 @@
-package tests.simple;
+package tests.tags;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Tag("negative")
 public class NegativeTests {
     @Test
-    @Tag("smoke")
     void test1() {
         assertTrue(false);
     }
