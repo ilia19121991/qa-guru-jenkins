@@ -36,7 +36,7 @@ public class TestBase {
         capabilities.setCapability(CapabilityType.BROWSER_VERSION,
                 (System.getProperty("browser_version", "100.0")));
         /** выбора разрешения из сборки дженкинс */
-        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
+        Configuration.browserSize = System.getProperty("browser_size", "0x0");
         /** еще передаем видео урл (в классе Attach в папке helpers)
          * https://selenoid.autotests.cloud/video/ */
 
