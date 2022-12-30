@@ -7,6 +7,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 
@@ -14,17 +15,37 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
+        /** базовый урл */
         // Configuration.baseUrl = "https://demoqa.com";
         Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com");
+        /** адрес удаленного браузера (selenoid) */
+        // Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = System.getProperty("remote_url", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+
         Configuration.holdBrowserOpen = true;
-        Configuration.browserSize = "1920x1080";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        // Configuration.timeout = 10000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
+
+        /** выбор браузера */
+        capabilities.setCapability(CapabilityType.BROWSER_NAME,
+                (System.getProperty("browser_name", "chrome")));
+        /** выбор версии браузера */
+        capabilities.setCapability(CapabilityType.BROWSER_VERSION,
+                (System.getProperty("browser_version", "100.0")));
+        /** выбора разрешения из сборки дженкинс */
+        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
+        /** еще передаем видео урл (в классе Attach в папке helpers)
+         * https://selenoid.autotests.cloud/video/ */
+
+
+
+        // capabilities.setCapability(CapabilityType.BROWSER_NAME, "chrome");
+        // Configuration.browserSize = "1920x1080";
+
+
 
     }
 

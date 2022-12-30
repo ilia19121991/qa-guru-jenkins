@@ -1,5 +1,6 @@
 package tests.demoqa;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 
@@ -12,8 +13,9 @@ import static io.qameta.allure.Allure.step;
 
 public class PracticeFormTests extends TestBase {
 
-
+// gradle clean practice_form_test -Dremote_url="https://user1:1234@selenoid.autotests.cloud/wd/hub" -D....
     @Test
+    @Tag("practice_form")
     void practiceFormTest() {
 
         String firstName = "anna";

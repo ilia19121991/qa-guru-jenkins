@@ -79,6 +79,13 @@ task tag_example_test(type: Test){
     }
 }
 
+task practice_form_test(type: Test){
+    useJUnitPlatform {
+        includeTags("practice_form")
+    }
+}
+
+
 help {
     doFirst {
         println ""
