@@ -17,10 +17,10 @@ public class TestBase {
     static void beforeAll() {
         /** базовый урл */
         // Configuration.baseUrl = "https://demoqa.com";
-        Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com");
+        Configuration.baseUrl = System.getProperty("base_url", "https://www.google.com/");
         /** адрес удаленного браузера (selenoid) */
         // Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        Configuration.remote = System.getProperty("remote_url", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        Configuration.remote = System.getProperty("remote_url", "https://www.google.com/");
 
         Configuration.holdBrowserOpen = true;
 
