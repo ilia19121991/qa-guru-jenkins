@@ -31,7 +31,7 @@ public class TestBase {
 
         /** выбор браузера */
         capabilities.setCapability(CapabilityType.BROWSER_NAME,
-                (System.getProperty("browser_name", "chrome")));
+                (System.getProperty("browser_name", "abc")));
         /** выбор версии браузера */
         capabilities.setCapability(CapabilityType.BROWSER_VERSION,
                 (System.getProperty("browser_version", "100.0")));
