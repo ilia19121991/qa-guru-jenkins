@@ -7,7 +7,6 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 
@@ -15,13 +14,6 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        /** базовый урл */
-        // Configuration.baseUrl = "https://demoqa.com";
-        Configuration.baseUrl = System.getProperty("base_url", "https://www.google.com/");
-        /** адрес удаленного браузера (selenoid) */
-        // Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        Configuration.remote = System.getProperty("remote_url", "https://www.google.com/");
-
         Configuration.holdBrowserOpen = true;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -29,7 +21,10 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
 
-
+        /** базовый урл */
+        Configuration.baseUrl = System.getProperty("base_url", "https://www.google.com/");
+        /** адрес удаленного браузера (selenoid) */
+        Configuration.remote = System.getProperty("remote_url", "https://www.google.com/");
         /** выбор браузера */
         Configuration.browser = System.getProperty("browser_name", "abc");
         /** выбор версии браузера */
@@ -40,14 +35,8 @@ public class TestBase {
          * https://selenoid.autotests.cloud/video/ */
 
 
-        /*capabilities.setCapability(CapabilityType.BROWSER_NAME,
-                (System.getProperty("browser_name", "abc")));
-        capabilities.setCapability(CapabilityType.BROWSER_VERSION,
-                (System.getProperty("browser_version", "100.0")));*/
-        // capabilities.setCapability(CapabilityType.BROWSER_NAME, "chrome");
-        // Configuration.browserSize = "1920x1080";
-
-
+        // Configuration.baseUrl = "https://demoqa.com";
+        // Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
     }
 
