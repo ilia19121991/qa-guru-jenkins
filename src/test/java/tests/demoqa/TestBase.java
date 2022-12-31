@@ -33,7 +33,7 @@ public class TestBase {
         /** выбор браузера */
         Configuration.browser = System.getProperty("browser_name", "abc");
         /** выбор версии браузера */
-        Configuration.browserVersion = System.getProperty("browser_version", "100.0");
+        Configuration.browserVersion = System.getProperty("browser_version", "0.0");
         /** выбора разрешения из сборки дженкинс */
         Configuration.browserSize = System.getProperty("browser_size", "0x0");
         /** еще передаем видео урл (в классе Attach в папке helpers)
