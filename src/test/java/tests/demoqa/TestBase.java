@@ -29,19 +29,21 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
 
+
         /** выбор браузера */
-        capabilities.setCapability(CapabilityType.BROWSER_NAME,
-                (System.getProperty("browser_name", "abc")));
+        Configuration.browser = System.getProperty("browser_name", "abc");
         /** выбор версии браузера */
-        capabilities.setCapability(CapabilityType.BROWSER_VERSION,
-                (System.getProperty("browser_version", "100.0")));
+        Configuration.browserVersion = System.getProperty("browser_version", "100.0");
         /** выбора разрешения из сборки дженкинс */
         Configuration.browserSize = System.getProperty("browser_size", "0x0");
         /** еще передаем видео урл (в классе Attach в папке helpers)
          * https://selenoid.autotests.cloud/video/ */
 
 
-
+        /*capabilities.setCapability(CapabilityType.BROWSER_NAME,
+                (System.getProperty("browser_name", "abc")));
+        capabilities.setCapability(CapabilityType.BROWSER_VERSION,
+                (System.getProperty("browser_version", "100.0")));*/
         // capabilities.setCapability(CapabilityType.BROWSER_NAME, "chrome");
         // Configuration.browserSize = "1920x1080";
 
