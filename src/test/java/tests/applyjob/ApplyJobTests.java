@@ -2,9 +2,11 @@ package tests.applyjob;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.Attach;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import tests.demoqa.TestBase;
 
 import static com.codeborne.selenide.Condition.text;
@@ -14,7 +16,33 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 @Tag("Apply job")
-public class ApplyJobTests extends TestBase {
+public class ApplyJobTests {
+    @BeforeAll
+    static void beforeAll() {
+        Configuration.holdBrowserOpen = true;
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
+
+    }
+
+    @BeforeEach
+    void addListener(){
+
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterEach
+    void addAttachments(){
+
+        Attach.screenshotAs("Last Screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+    }
+
 
     @DisplayName("Проверка корректной работы поиска через поисковую строку")
     @Test
