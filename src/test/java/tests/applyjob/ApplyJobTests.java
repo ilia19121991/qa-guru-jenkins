@@ -49,7 +49,7 @@ public class ApplyJobTests {
     void searchBySearchStringTest() {
 
         step("Открываем сайт главную страницу DNS", () -> {
-            open("/");
+            open("https://www.dns-shop.ru/");
         });
         step("Вводим в поисковую строку слово Перчатки", () -> {
             $("[name=q]").setValue("Перчатки").pressEnter();
@@ -93,6 +93,33 @@ public class ApplyJobTests {
         });
     }
 
+    @DisplayName("Проверка перехода на страницу акций с главной страницы")
+    @Test
+    void searchByPromotionsTest() {
+        step("Открываем сайт главную страницу DNS", () -> {
+            open("https://www.dns-shop.ru/");
+        });
+        step("Нажимаем на кнопку: Все акции", () -> {
+            $(".homepage-actions__action-buttons").find(byText("Все акции")).click();
+        });
+        step("Проверяем, что открылся раздел Акции", () -> {
+            $(".actions-filters").shouldHave(text("Вид акций"));
+        });
+    }
+
+    @DisplayName("Проверка перехода на страницу сравнения товаров с главной страницы")
+    @Test
+    void compareProductsTest() {
+        step("Открываем сайт главную страницу DNS", () -> {
+            open("https://www.dns-shop.ru/");
+        });
+        step("Нажимаем на кнопку 'Сравнение'", () -> {
+            $(".compare-link-counter").click();
+        });
+        step("Проверяем, что открылся раздел Сравнение", () -> {
+            $(".top-compare__header").shouldHave(text("Часто сравниваемые"));
+        });
+    }
 
     @DisplayName("Поиск через кнопку Каталог на Главной странице (пока что фэйлится")
     @Test
@@ -106,25 +133,23 @@ public class ApplyJobTests {
         step("Подтверждаем свой город", () -> {
             $(".v-confirm-city__buttons_qv9").find(byText("Всё верно")).click();
         });
-        step("Нажимаем на кнопку Каталог", () -> {
+        step("Нажимаем на кнопку: Каталог", () -> {
             $("[data-role=catalog-button]").click();
         });
         step("Наводим мышку на пункт: ПК, ноутбуки, периферия", () -> {
             $(".header-menu-desktop-wrap").find(byText("ПК, ноутбуки, периферия")).click();
         });
-        step("Выбираем пункт: Ноутбуки ", () -> {
+        step("Выбираем пункт: Ноутбуки", () -> {
             $(byXpath("//*[@id=\"header-search\"]/div/div[4]/div/div[2]/div/div[2]/div[1]/a[1]")).click();
-          //  $(".header-menu-desktop__second-level-wrap").find(byLinkText("noutbuki")).click();
+            //  $(".header-menu-desktop__second-level-wrap").find(byLinkText("noutbuki")).click();
         });
         step("Выбираем раздел Ноутбуки и аксессуары", () -> {
             $(".subcategory__item-container").find(byText("Ноутбуки и аксессуары")).click();
         });
-
         step("Проверяем, что в первом элементе списка выдачи находится ноутбук", () -> {
             $$("[data-id=product]").first().shouldHave(text("ноутбук"));
         });
 
-
-
     }
+
 }
